@@ -1,0 +1,30 @@
+{% extends "animarte_app/base.html" %}
+
+{% block titulo %}Resultados de Búsqueda{% endblock %}
+
+{% block contenido %}
+    <h2>Búsqueda de Servicios</h2>
+    
+    <form action="{% url 'buscar_servicio' %}" method="get">
+        {{ form.termino_busqueda }} 
+        <button type="submit">Buscar</button>
+    </form>
+    
+    {% if termino %}
+        <h3>Resultados para "{{ termino }}"</h3>
+    {% endif %}
+
+    {% if resultados %}
+        <ul>
+        {% for servicio in resultados %}
+            <li>
+                <strong>{{ servicio.nombre }}</strong> (${{ servicio.precio }})
+                <p>Descripción: {{ servicio.descripcion|truncatechars:100 }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% elif termino %}
+        <p>No se encontraron servicios que coincidan con "{{ termino }}".</p>
+    {% endif %}
+
+{% endblock %}

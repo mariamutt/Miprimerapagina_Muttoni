@@ -1,0 +1,26 @@
+{% extends "animarte_app/base.html" %}
+
+{% block titulo %}Servicios Disponibles{% endblock %}
+
+{% block contenido %}
+    <h2>Nuestros Servicios de Animación</h2>
+    
+    <form action="{% url 'buscar_servicio' %}" method="get">
+        {{ form_busqueda.termino_busqueda }} 
+        <button type="submit">Buscar</button>
+    </form>
+    
+    {% if servicios %}
+        <ul>
+        {% for servicio in servicios %}
+            <li>
+                <strong>{{ servicio.nombre }}</strong> (${{ servicio.precio }}) - Duración: {{ servicio.duracion }}.
+                <p>Detalle: {{ servicio.descripcion|truncatechars:100 }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aún no hay servicios registrados. ¡Crea uno!</p>
+    {% endif %}
+
+{% endblock %}

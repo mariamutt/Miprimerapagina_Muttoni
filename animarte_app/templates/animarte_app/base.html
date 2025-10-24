@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Animarte | Gestión de Servicios{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Animarte Animaciones 🎉</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'lista_servicios' %}">🏠 Home / Servicios</a></li>
+                <li><a href="{% url 'crear_servicio' %}">➕ Nuevo Servicio</a></li>
+                <li><a href="{% url 'crear_animador' %}">➕ Nuevo Animador</a></li>
+                <li><a href="{% url 'crear_resena' %}">➕ Dejar Reseña</a></li>
+                <li><a href="{% url 'buscar_servicio' %}">🔎 Buscar Servicio</a></li>
+                <li><a href="{% url 'admin:index' %}">⚙️ Administrador</a></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block contenido %}
+        {% endblock contenido %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2024 Proyecto Animarte. Desarrollado con Django.</p>
+    </footer>
+</body>
+</html>
